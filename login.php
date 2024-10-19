@@ -17,10 +17,13 @@ $data = json_decode(file_get_contents("php://input"), true);
 $user = $data['username'];
 $npass = $data['password'];
 
-// if (empty($user) || empty($npass)) {
-//     echo json_encode(["success" => false, "message" => 'Username and password cannot be empty.']);
-//     exit;
-// }
+if (empty($user) || empty($npass)) {
+     echo json_encode(["success" => false, "message" => 'Username and password cannot be empty.']);
+     exit;
+ }
+if(strlen($npass)<8){
+    echo json_encode(["success"=>false, "message"=>'Minimum password length should be 8 character long.']);
+}
 
 $stmt = $conn->prepare("SELECT password FROM users WHERE username = ?");
 $stmt->bind_param("s", $user);

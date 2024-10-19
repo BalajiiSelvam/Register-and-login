@@ -19,8 +19,8 @@ $user = $data['username'];
 $npass = $data['password'];
 
 // Validate password length
-if (strlen($npass) !== 8) {
-    echo json_encode(['success' => false, 'message' => 'Password must be exactly 8 characters long.']);
+if (strlen($npass) < 8) {
+    echo json_encode(['success' => false, 'message' => 'Minimum password length should be 8 character long.']);
     exit; // Stop further processing
 }
 
