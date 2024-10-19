@@ -4,8 +4,8 @@ document.getElementById('registrationForm').addEventListener('submit', event => 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    if (password.length !== 8) {
-        alert('Password must be exactly 8 characters long.');
+    if (password.length < 8) {
+        alert('Password should be minimum 8 character long.');
         return; // Stop execution if validation fails
     } else {
         const data = { username, password };

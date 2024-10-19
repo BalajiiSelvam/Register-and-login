@@ -20,7 +20,25 @@ $npass = $data['password'];
 
 // Validate password length
 if (strlen($npass) < 8) {
-    echo json_encode(['success' => false, 'message' => 'Minimum password length should be 8 character long.']);
+    echo json_encode(['success' => false, 'message' => 'Minimum password length should be 8 characters long.']);
+    exit; // Stop further processing
+}
+
+// Check for at least one number
+if (!preg_match('/\d/', $npass)) {
+    echo json_encode(['success' => false, 'message' => 'Password must contain at least one number.']);
+    exit; // Stop further processing
+}
+
+// Check for at least one uppercase letter
+if (!preg_match('/[A-Z]/', $npass)) {
+    echo json_encode(['success' => false, 'message' => 'Password must contain at least one uppercase letter.']);
+    exit; // Stop further processing
+}
+
+// Check for at least one special character
+if (!preg_match('/[!@#$%^&*(),.?":{}|<>]/', $npass)) {
+    echo json_encode(['success' => false, 'message' => 'Password must contain at least one special character.']);
     exit; // Stop further processing
 }
 

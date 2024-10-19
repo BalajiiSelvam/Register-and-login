@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+//mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 $servername = 'localhost';
 $username = 'myaccount';
